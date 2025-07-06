@@ -13,7 +13,7 @@ app.use(express.json());
 const productRoutes = require('./routes/productRoutes');
 const stripeRoutes = require('./routes/stripeRoutes');
 
-app.use('/api/products', productRoutes);
+app.use('/api', productRoutes);
 app.use('/api/stripe', stripeRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
