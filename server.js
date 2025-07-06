@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
+
 dotenv.config();
 
 const app = express();
@@ -13,7 +15,7 @@ const stripeRoutes = require('./routes/stripeRoutes');
 
 app.use('/api/products', productRoutes);
 app.use('/api/stripe', stripeRoutes);
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
