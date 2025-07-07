@@ -25,6 +25,7 @@ router.post('/upload', upload.array('images', 3), async (req, res) => {
 // In routes/productRoutes.js or similar
 router.get('/products/:id', async (req, res) => {
   try {
+      console.log('Fetching product with ID:', req.params.id);
     const product = await Product.findById(req.params.id);
     if (!product) return res.status(404).json({ message: 'Product not found' });
     res.json(product);
